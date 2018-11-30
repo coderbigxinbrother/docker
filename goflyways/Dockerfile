@@ -8,5 +8,7 @@ RUN apk --no-cache add ca-certificates wget && \
     wget -N --no-check-certificate "https://github.com/coyove/goflyway/releases/download/2.0.0rc1/goflyway_linux_amd64.tar.gz" && \
     tar -xzf "goflyway_linux_amd64.tar.gz" && rm -rf "goflyway_linux_amd64.tar.gz" && \
     chmod +x goflyway
-    
-CMD ["/goflyway/goflyway","$CONFIG"]
+
+ENV PATH /goflyway:$PATH
+
+ENTRYPOINT ["goflyway"]
